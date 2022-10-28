@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+@layer base {
+	:root {
+		--title-gradient-rad: 180deg;
+	}
+
+	:root,
+	* {
+		@apply antialiased tracking-tight;
+	}
+
+	.title-gradient {
+		background-image: linear-gradient(
+			var(--title-gradient-rad),
+			var(--tw-gradient-from),
+			var(--tw-gradient-stops),
+			var(--tw-gradient-to)
+		);
+	}
+}
