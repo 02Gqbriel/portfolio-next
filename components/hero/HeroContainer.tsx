@@ -55,7 +55,7 @@ export default function HeroContainer() {
 	return (
 		<>
 			<div className='min-h-screen bg-neutral-100 overflow-hidden relative cursor-none'>
-				<span className='text-9xl font-bold absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]  tracking-tight whitespace-nowrap text-transparent p-4 bg-clip-text title-gradient from-neutral-50 via-neutral-300 to-neutral-400'>
+				<span className='text-9xl font-bold absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]  tracking-tight whitespace-nowrap text-transparent p-4 bg-clip-text title-gradient from-neutral-200/20 via-neutral-200/60 to-neutral-400/70'>
 					Gabriel Egli
 				</span>
 			</div>
