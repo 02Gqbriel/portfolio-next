@@ -1,4 +1,4 @@
-export default function convertToRange(
+export default function mapToRange(
 	value: number,
 	srcRange: [number, number],
 	dstRange: [number, number]

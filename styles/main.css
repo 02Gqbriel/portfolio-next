@@ -7,6 +7,10 @@
 	:root {
 		--title-gradient-left: 50%;
 		--title-gradient-top: 50%;
+		--title-gradient-size: 15%;
+		--title-x-rotation: 0;
+		--title-y-rotation: 0;
+		--title-rotation-deg: 0;
 	}
 
 	:root,
@@ -14,12 +18,78 @@
 		@apply antialiased tracking-tight;
 	}
 
+	.title-text {
+		@apply absolute left-[50%] top-[50%] subpixel-antialiased text-9xl font-semibold tracking-tight whitespace-nowrap;
+	}
+
+	.rotate3d {
+		transform-origin: center;
+		transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
+			rotate3d(
+				var(--title-x-rotation),
+				var(--title-y-rotation),
+				0,
+				var(--title-rotation-deg)
+			);
+		-webkit-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
+			rotate3d(
+				var(--title-x-rotation),
+				var(--title-y-rotation),
+				0,
+				var(--title-rotation-deg)
+			);
+		-moz-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
+			rotate3d(
+				var(--title-x-rotation),
+				var(--title-y-rotation),
+				0,
+				var(--title-rotation-deg)
+			);
+		-ms-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
+			rotate3d(
+				var(--title-x-rotation),
+				var(--title-y-rotation),
+				0,
+				var(--title-rotation-deg)
+			);
+		-o-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
+			rotate3d(
+				var(--title-x-rotation),
+				var(--title-y-rotation),
+				0,
+				var(--title-rotation-deg)
+			);
+	}
+
 	.title-gradient {
 		background-image: radial-gradient(
-			circle farthest-side at var(--title-gradient-left)
+			circle farthest-corner at var(--title-gradient-left)
 				var(--title-gradient-top),
-			var(--tw-gradient-from) 15%,
+			var(--tw-gradient-from) var(--title-gradient-size),
 			var(--tw-gradient-to)
 		);
+		transition: all 10ms ease-in-out;
+		-webkit-transition: all 10ms ease-in-out;
+		-moz-transition: all 10ms ease-in-out;
+		-ms-transition: all 10ms ease-in-out;
+		-o-transition: all 10ms ease-in-out;
+	}
+
+	.background-gradient {
+		background-image: radial-gradient(
+			circle farthest-corner at var(--title-gradient-left)
+				var(--title-gradient-top),
+			var(--tw-gradient-from),
+			var(--tw-gradient-to)
+		);
+		transition: background-image 200ms ease-in-out;
+		-webkit-transition: background-image 200ms ease-in-out;
+		-moz-transition: background-image 200ms ease-in-out;
+		-ms-transition: background-image 200ms ease-in-out;
+		-o-transition: background-image 200ms ease-in-out;
+	}
+
+	.title-glow {
+		text-shadow: 0 5px 2px var(--tw-gradient-from);
 	}
 }
