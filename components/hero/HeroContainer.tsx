@@ -30,6 +30,18 @@ export default function HeroContainer() {
 		}
 		if (day != mouse.y < center.y) setDay(mouse.y < center.y);
 
+		const left = (100 / innerWidth) * mouse.x;
+		document.documentElement.style.setProperty(
+			'--title-gradient-left',
+			`${left}%`
+		);
+
+		const top = (100 / innerHeight) * mouse.y;
+		document.documentElement.style.setProperty(
+			'--title-gradient-top',
+			`${top}%`
+		);
+
 		setDeg(
 			Math.round(
 				(Math.atan2(mouse.y - center.y, mouse.x - center.x) * 180) / Math.PI
@@ -55,7 +67,7 @@ export default function HeroContainer() {
 	return (
 		<>
 			<div className='min-h-screen bg-neutral-100 overflow-hidden relative cursor-none'>
-				<span className='text-9xl font-bold absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]  tracking-tight whitespace-nowrap text-transparent p-4 bg-clip-text title-gradient from-neutral-200/20 via-neutral-200/60 to-neutral-400/70'>
+				<span className='subpixel-antialiased text-9xl font-bold absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]  tracking-tight whitespace-nowrap text-transparent p-4 bg-clip-text title-gradient from-neutral-100  to-neutral-500'>
 					Gabriel Egli
 				</span>
 			</div>
