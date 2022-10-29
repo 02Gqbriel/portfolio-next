@@ -8,57 +8,27 @@
 		--title-gradient-left: 50%;
 		--title-gradient-top: 50%;
 		--title-gradient-size: 15%;
-		--title-x-rotation: 0;
-		--title-y-rotation: 0;
-		--title-rotation-deg: 0;
+
+		--background-gradient-left: 50%;
+		--background-gradient-top: 50%;
+
+		--title-size: 8rem;
+		--title-opacity: 1;
+		--title-top: 50vh;
 	}
 
 	:root,
 	* {
-		@apply antialiased tracking-tight;
+		@apply antialiased leading-relaxed;
 	}
 
 	.title-text {
-		@apply absolute left-[50%] top-[50%] subpixel-antialiased text-9xl font-semibold tracking-tight whitespace-nowrap;
-	}
+		@apply absolute left-[50vw] -translate-x-[50%] -translate-y-[50%] subpixel-antialiased;
 
-	.rotate3d {
-		transform-origin: center;
-		transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
-			rotate3d(
-				var(--title-x-rotation),
-				var(--title-y-rotation),
-				0,
-				var(--title-rotation-deg)
-			);
-		-webkit-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
-			rotate3d(
-				var(--title-x-rotation),
-				var(--title-y-rotation),
-				0,
-				var(--title-rotation-deg)
-			);
-		-moz-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
-			rotate3d(
-				var(--title-x-rotation),
-				var(--title-y-rotation),
-				0,
-				var(--title-rotation-deg)
-			);
-		-ms-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
-			rotate3d(
-				var(--title-x-rotation),
-				var(--title-y-rotation),
-				0,
-				var(--title-rotation-deg)
-			);
-		-o-transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1)
-			rotate3d(
-				var(--title-x-rotation),
-				var(--title-y-rotation),
-				0,
-				var(--title-rotation-deg)
-			);
+		font-size: var(--title-size);
+		line-height: 1;
+		opacity: var(--title-opacity);
+		top: var(--title-top);
 	}
 
 	.title-gradient {
@@ -77,10 +47,10 @@
 
 	.background-gradient {
 		background-image: radial-gradient(
-			circle farthest-corner at var(--title-gradient-left)
-				var(--title-gradient-top),
+			circle farthest-corner at var(--background-gradient-left)
+				var(--background-gradient-top),
 			var(--tw-gradient-from),
-			var(--tw-gradient-to)
+			var(--tw-gradient-to) 30%
 		);
 		transition: background-image 200ms ease-in-out;
 		-webkit-transition: background-image 200ms ease-in-out;
@@ -91,5 +61,13 @@
 
 	.title-glow {
 		text-shadow: 0 5px 2px var(--tw-gradient-from);
+	}
+
+	.sticky-scroll-container {
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		scrollbar-width: none; /* Firefox */
+	}
+	.sticky-scroll-container::-webkit-scrollbar {
+		display: none; /* Safari and Chrome */
 	}
 }

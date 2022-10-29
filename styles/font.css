@@ -1,0 +1,95 @@
+@font-face {
+	font-family: 'OkineOutline';
+	font-style: normal;
+	font-weight: 100;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-ThinOutline.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'OkineOutline';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-LightOutline.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'OkineOutline';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-RegularOutline.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'OkineOutline';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-MediumOutline.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'OkineOutline';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-BoldOutline.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'OkineOutline';
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-BlackOutline.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Okine';
+	font-style: normal;
+	font-weight: 100;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-Thin.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Okine';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-Light.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Okine';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-Regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Okine';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-Medium.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Okine';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-Bold.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Okine';
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+	src: url('/font/okine/OkineSans-Black.otf') format('opentype');
+}

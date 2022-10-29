@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import clamp from '../../functions/clamp';
 import mapToRange from '../../functions/mapToRange';
 import throttle from '../../functions/throttle';
 
 export default function HeroContainer() {
-	const [inHero, setInHero] = useState(true);
+	const [scroll, setScroll] = useState(0);
+	const [mobile, setMobile] = useState(false);
 
-	function calculateRelativeDegrees(event: MouseEvent) {
-		if (event.pageY > innerHeight) return setInHero(false);
-
+	function calculateLigthing(event: PointerEvent) {
 		let center: { x: number; y: number } = {
 			x: innerWidth / 2,
 			y: innerHeight / 2,
@@ -29,6 +28,19 @@ export default function HeroContainer() {
 		document.documentElement.style.setProperty(
 			'--title-gradient-top',
 			`${top}%`
+		);
+
+		const bleft = (100 / document.documentElement.clientWidth) * mouse.x;
+		document.documentElement.style.setProperty(
+			'--background-gradient-left',
+			`${bleft}%`
+		);
+
+		const btop =
+			(100 / innerHeight) * (mouse.y + document.documentElement.scrollTop);
+		document.documentElement.style.setProperty(
+			'--background-gradient-top',
+			`${btop}%`
 		);
 
 		const sizeX =
@@ -55,95 +67,102 @@ export default function HeroContainer() {
 			'--title-gradient-size',
 			`${(sizeX + sizeY) / 2}%`
 		);
+	}
 
-		mapToRange((sizeX + sizeY) / 2, [10, 35], [100, 150]);
+	function calculateSize() {
+		const container = document.documentElement;
 
-		if (inHero) {
-			const cursor =
-				document.querySelector<HTMLSpanElement>('#cursor') ??
-				new HTMLSpanElement();
-
-			cursor.style.left = `${mouse.x}px`;
-			cursor.style.top = `${mouse.y}px`;
-			cursor.style.transform = `scale(${mapToRange(
-				(sizeX + sizeY) / 2,
-				[10, 35],
-				[100, 250]
-			)}%)`;
-		} else {
-			setInHero(true);
-		}
-
-		const xRot =
-			((100 / center.x) *
-				(mouse.x > center.x ? mouse.x : innerWidth - mouse.x)) /
-				100 -
-			1;
-
-		const yRot =
-			((100 / center.y) *
-				(mouse.y > center.y ? mouse.y : innerHeight - mouse.y)) /
-				100 -
-			1;
+		setScroll(container.scrollTop);
 
 		document.documentElement.style.setProperty(
-			'--title-x-rotation',
-			(mouse.x < center.x ? yRot : -yRot) + ''
-		);
-		document.documentElement.style.setProperty(
-			'--title-y-rotation',
-			(mouse.y < center.y ? xRot : -xRot) + ''
-		);
-
-		const rotationY = mapToRange(
-			(mouse.y < center.y ? innerHeight - mouse.y : mouse.y) - innerHeight / 2,
-			[0, innerHeight / 2],
-			[0, 20]
-		);
-
-		const rotationX = mapToRange(
-			(mouse.x < center.x ? innerWidth - mouse.x : mouse.x) - innerWidth / 2,
-			[0, innerWidth / 2],
-			[0, 20]
+			'--title-size',
+			`${mapToRange(
+				container.scrollTop,
+				[0, innerHeight],
+				[innerWidth < 640 ? 4 : 8, 35]
+			)}rem`
 		);
 
 		document.documentElement.style.setProperty(
-			'--title-rotation-deg',
-			((rotationX / 10 + rotationY / 10) / 2) * 10 + 'deg'
+			'--title-opacity',
+			`${mapToRange(container.scrollTop, [0, innerHeight], [1, -0.5])}`
 		);
 
-		console.log((rotationX + rotationY) / 2);
+		document.documentElement.style.setProperty(
+			'--title-top',
+			`${mapToRange(container.scrollTop, [0, innerHeight], [50, 100])}vh`
+		);
+	}
+
+	function scrollDown() {
+		window.scroll({ top: innerHeight, behavior: 'smooth' });
 	}
 
 	useEffect(() => {
-		window.onpointermove = throttle(calculateRelativeDegrees, 10);
+		if (innerWidth < 640) {
+			window.onpointerdown = calculateLigthing;
+			setMobile(true);
+		} else {
+			window.onpointermove = throttle(calculateLigthing, 10);
+		}
+
+		document.body.onscroll = throttle(calculateSize, 10);
+		calculateSize();
 
 		return () => {
 			window.onmousemove = null;
+			document.body.onscroll = null;
 		};
-	});
+	}, [mobile]);
 
 	return (
 		<>
-			<div className='min-h-screen  overflow-hidden relative cursor-none background-gradient from-neutral-800 to-neutral-900'>
-				<span className='title-text text-transparent p-4 bg-clip-text title-gradient from-neutral-300 to-neutral-900 rotate3d'>
-					Gabriel Egli
-				</span>
-			</div>
+			<div
+				id='hero-container'
+				className='overflow-hidden relative sticky-scroll-container h-screen background-gradient from-neutral-800 to-neutral-900'>
+				{mobile && (
+					<div className='flex absolute top-1 left-[50%] -translate-x-[50%] w-max gap-1'>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							viewBox='0 0 20 20'
+							fill='currentColor'
+							className='w-4 h-4 fill-neutral-500'>
+							<path
+								fillRule='evenodd'
+								d='M10 1a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 1zM5.05 3.05a.75.75 0 011.06 0l1.062 1.06A.75.75 0 116.11 5.173L5.05 4.11a.75.75 0 010-1.06zm9.9 0a.75.75 0 010 1.06l-1.06 1.062a.75.75 0 01-1.062-1.061l1.061-1.06a.75.75 0 011.06 0zM3 8a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 013 8zm11 0a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5h-1.5A.75.75 0 0114 8zm-6.828 2.828a.75.75 0 010 1.061L6.11 12.95a.75.75 0 01-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm3.594-3.317a.75.75 0 00-1.37.364l-.492 6.861a.75.75 0 001.204.65l1.043-.799.985 3.678a.75.75 0 001.45-.388l-.978-3.646 1.292.204a.75.75 0 00.74-1.16l-3.874-5.764z'
+								clipRule='evenodd'
+							/>
+						</svg>
 
-			{inHero && (
-				<span
-					id='cursor'
-					className='absolute -translate-x-[50%] -translate-y-[50%] cursor-none pointer-events-none'>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						viewBox='0 0 24 24'
-						fill='currentColor'
-						className='w-10 h-10 fill-neutral-200'>
-						<path d='M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z' />
-					</svg>
-				</span>
-			)}
+						<span className='text-xs font-light text-neutral-500'>
+							Tap screen to change lighting angle
+						</span>
+					</div>
+				)}
+
+				<div>
+					<span className='title-text select-none text-transparent bg-clip-text title-gradient from-neutral-100 to-neutral-900 pb-3 text-center md:whitespace-nowrap sm:font-medium'>
+						Gabriel Egli
+					</span>
+				</div>
+				{scroll < 200 && (
+					<span
+						onClick={scrollDown}
+						className='absolute bottom-10 left-[50%] -translate-x-[50%] cursor-pointer p-2 active:scale-125 transition-transform group'>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							viewBox='0 0 20 20'
+							fill='currentColor'
+							className='w-5 h-5 fill-neutral-400 animate-bounce group-active:fill-neutral-200'>
+							<path
+								fillRule='evenodd'
+								d='M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v4.59L7.3 9.24a.75.75 0 00-1.1 1.02l3.25 3.5a.75.75 0 001.1 0l3.25-3.5a.75.75 0 10-1.1-1.02l-1.95 2.1V6.75z'
+								clipRule='evenodd'
+							/>
+						</svg>
+					</span>
+				)}
+			</div>
 		</>
 	);
 }
