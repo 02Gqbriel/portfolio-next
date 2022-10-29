@@ -8,7 +8,7 @@ const nextConfig = {
 			{
 				// Apply these headers to all routes in your application.
 				source: '/:path*',
-				headers: { key: 'Access-Control-Allow-Origin', value: '*' },
+				headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
 			},
 		];
 	},
