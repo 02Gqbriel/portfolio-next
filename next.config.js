@@ -11,7 +11,7 @@ const nextConfig = {
 				headers: [
 					{
 						key: 'Access-Control-Allow-Origin',
-						value: 'https://vitals.vercel-insights.com',
+						value: '*',
 					},
 					{ key: 'Referrer-Policy', value: 'strict-origin' },
 				],

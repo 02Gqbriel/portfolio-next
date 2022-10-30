@@ -6,13 +6,13 @@ export default function Document() {
 			<Head>
 				<link
 					rel='preload'
-					href='/font/OkineSans-Medium.otf'
+					href='/font/okine/OkineSans-Medium.otf'
 					as='font'
 					type='font/otf'
 				/>
 				<link
 					rel='preload'
-					href='/font/OkineSans-Regular.otf'
+					href='/font/okine/OkineSans-Regular.otf'
 					as='font'
 					type='font/otf'
 				/>
