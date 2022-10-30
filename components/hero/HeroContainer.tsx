@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import clamp from '../../functions/clamp';
 import mapToRange from '../../functions/mapToRange';
 import throttle from '../../functions/throttle';
@@ -6,6 +6,8 @@ import MobileHint from './MobileHint';
 import ScrollDownButton from './ScrollDownButton';
 
 export default function HeroContainer() {
+	const [pastHero, setPastHero] = useState(false);
+
 	function calculateLigthing(event: PointerEvent) {
 		if (innerHeight - scrollY <= 0 || innerHeight < scrollY + event.y) return;
 
@@ -85,14 +87,27 @@ export default function HeroContainer() {
 	}
 
 	useEffect(() => {
-		if (innerWidth < 640) {
-			window.addEventListener('pointerdown', calculateLigthing);
-		} else {
-			window.addEventListener('pointermove', throttle(calculateLigthing, 5));
-		}
+		setPastHero(innerHeight <= scrollY);
 
-		document.addEventListener('scroll', calculateSize);
-		calculateSize();
+		if (pastHero) {
+			if (innerWidth < 640) {
+				window.removeEventListener('pointerdown', calculateLigthing);
+			} else {
+				window.removeEventListener(
+					'pointermove',
+					throttle(calculateLigthing, 5)
+				);
+			}
+		} else {
+			if (innerWidth < 640) {
+				window.addEventListener('pointerdown', calculateLigthing);
+			} else {
+				window.addEventListener('pointermove', throttle(calculateLigthing, 5));
+			}
+
+			document.addEventListener('scroll', calculateSize);
+			calculateSize();
+		}
 
 		return () => {
 			if (innerWidth < 640) {
@@ -106,7 +121,7 @@ export default function HeroContainer() {
 
 			document.removeEventListener('scroll', calculateSize);
 		};
-	});
+	}, []);
 
 	return (
 		<>

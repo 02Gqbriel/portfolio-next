@@ -3,7 +3,20 @@ import { Html, Head, Main, NextScript } from 'next/document';
 export default function Document() {
 	return (
 		<Html className='snap-y snap-proximity' lang='en-US'>
-			<Head></Head>
+			<Head>
+				<link
+					rel='preload'
+					href='/font/OkineSans-Medium.otf'
+					as='font'
+					type='font/otf'
+				/>
+				<link
+					rel='preload'
+					href='/font/OkineSans-Regular.otf'
+					as='font'
+					type='font/otf'
+				/>
+			</Head>
 			<body>
 				<Main />
 				<NextScript />
