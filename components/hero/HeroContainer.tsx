@@ -59,7 +59,7 @@ export default function HeroContainer() {
 		document.documentElement.style.setProperty(
 			'--title-size',
 			`${mapToRange(
-				container.scrollTop,
+				clamp(container.scrollTop, 0, innerHeight),
 				[0, innerHeight],
 				[innerWidth < 640 ? 4 : 8, 35]
 			)}rem`
@@ -68,7 +68,7 @@ export default function HeroContainer() {
 		document.documentElement.style.setProperty(
 			'--title-opacity',
 			`${mapToRange(
-				container.scrollTop,
+				clamp(container.scrollTop, 0, innerHeight),
 				[0, innerHeight],
 				[1, innerWidth < 640 ? -1.75 : -0.5]
 			)}`
@@ -76,7 +76,11 @@ export default function HeroContainer() {
 
 		document.documentElement.style.setProperty(
 			'--title-top',
-			`${mapToRange(container.scrollTop, [0, innerHeight], [50, 100])}vh`
+			`${mapToRange(
+				clamp(container.scrollTop, 0, innerHeight),
+				[0, innerHeight],
+				[50, 100]
+			)}vh`
 		);
 	}
 
@@ -117,7 +121,7 @@ export default function HeroContainer() {
 					</span>
 				</div>
 
-				<div className='w-screen h-10  absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/70 to-neutral-900/100' />
+				<div className='w-screen h-10 absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/70 to-neutral-900' />
 
 				<ScrollDownButton />
 			</div>
