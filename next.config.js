@@ -13,7 +13,6 @@ const nextConfig = {
 						key: 'Access-Control-Allow-Origin',
 						value: '*',
 					},
-					{ key: 'Referrer-Policy', value: 'strict-origin' },
 				],
 			},
 		];
