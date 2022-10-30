@@ -23,11 +23,15 @@ export default function Layout({ children }: LayoutProps) {
 
 				<div className='flex flex-col flex-grow justify-between '>
 					<div className='snap-always snap-start'></div>
-					{router.pathname !== '/_error' && <Header />}
+					{router.pathname !== '/404' && router.pathname !== '/500' && (
+						<Header />
+					)}
 
-					<main className='flex-grow p-2'>{children}</main>
+					<main className='flex-grow'>{children}</main>
 
-					{router.pathname !== '/_error' && <Footer />}
+					{router.pathname !== '/404' && router.pathname !== '/500' && (
+						<Footer />
+					)}
 				</div>
 			</div>
 		</>

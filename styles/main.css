@@ -22,6 +22,10 @@
 		@apply antialiased leading-relaxed;
 	}
 
+	*::selection {
+		@apply bg-neutral-200 text-neutral-800;
+	}
+
 	.title-text {
 		@apply absolute left-[50vw] -translate-x-[50%] -translate-y-[50%] subpixel-antialiased;
 
@@ -61,13 +65,5 @@
 
 	.title-glow {
 		text-shadow: 0 5px 2px var(--tw-gradient-from);
-	}
-
-	.sticky-scroll-container {
-		-ms-overflow-style: none; /* Internet Explorer 10+ */
-		scrollbar-width: none; /* Firefox */
-	}
-	.sticky-scroll-container::-webkit-scrollbar {
-		display: none; /* Safari and Chrome */
 	}
 }
