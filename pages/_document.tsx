@@ -15,14 +15,14 @@ export default function Document() {
 				<meta name='author' content='Gabriel Egli' />
 				<meta
 					name='description'
-					content='With a beautiful design and numerous features, I offer online presence for companies or individuals in need of it. If you are interested, visit my page where you can contact me immediately.'
+					content='With beautiful design and numerous features, I offer online presence for companies or individuals in need of it. If you are interested, visit my page where you can contact me immediately.'
 				/>
 
 				<meta property='og:image' content='' />
 				<meta property='og:title' content='Webdesign · Gabriel Egli' />
 				<meta
 					property='og:description'
-					content='With a beautiful design and numerous features, I offer online presence for companies or individuals in need of it. If you are interested, visit my page where you can contact me immediately.'
+					content='With beautiful design and numerous features, I offer online presence for companies or individuals in need of it. If you are interested, visit my page where you can contact me immediately.'
 				/>
 				<meta property='og:url' content='https://www.gabriel-egli.ch' />
 				<meta property='og:type' content='website' />

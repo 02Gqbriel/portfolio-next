@@ -42,11 +42,6 @@
 			var(--tw-gradient-from) var(--title-gradient-size),
 			var(--tw-gradient-to)
 		);
-		transition: all 10ms ease-in-out;
-		-webkit-transition: all 10ms ease-in-out;
-		-moz-transition: all 10ms ease-in-out;
-		-ms-transition: all 10ms ease-in-out;
-		-o-transition: all 10ms ease-in-out;
 	}
 
 	.background-gradient {
@@ -56,11 +51,6 @@
 			var(--tw-gradient-from),
 			var(--tw-gradient-to) 30%
 		);
-		transition: background-image 200ms ease-in-out;
-		-webkit-transition: background-image 200ms ease-in-out;
-		-moz-transition: background-image 200ms ease-in-out;
-		-ms-transition: background-image 200ms ease-in-out;
-		-o-transition: background-image 200ms ease-in-out;
 	}
 
 	.title-glow {

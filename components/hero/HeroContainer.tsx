@@ -95,14 +95,14 @@ export default function HeroContainer() {
 			} else {
 				window.removeEventListener(
 					'pointermove',
-					throttle(calculateLigthing, 5)
+					throttle(calculateLigthing, 10)
 				);
 			}
 		} else {
 			if (innerWidth < 640) {
 				window.addEventListener('pointerdown', calculateLigthing);
 			} else {
-				window.addEventListener('pointermove', throttle(calculateLigthing, 5));
+				window.addEventListener('pointermove', throttle(calculateLigthing, 10));
 			}
 
 			document.addEventListener('scroll', calculateSize);
@@ -115,13 +115,13 @@ export default function HeroContainer() {
 			} else {
 				window.removeEventListener(
 					'pointermove',
-					throttle(calculateLigthing, 5)
+					throttle(calculateLigthing, 10)
 				);
 			}
 
 			document.removeEventListener('scroll', calculateSize);
 		};
-	}, []);
+	}, [pastHero]);
 
 	return (
 		<>
@@ -130,7 +130,7 @@ export default function HeroContainer() {
 				className='overflow-hidden relative h-screen background-gradient from-neutral-700 to-neutral-900 '>
 				<MobileHint />
 
-				<span className='title-text select-none text-transparent bg-clip-text title-gradient from-neutral-100 to-neutral-900 pb-3 text-center md:whitespace-nowrap sm:font-medium'>
+				<span className='title-text transition-all duration-[10ms] select-none text-transparent bg-clip-text title-gradient from-neutral-100 to-neutral-900 pb-5 text-center md:whitespace-nowrap sm:font-medium'>
 					Gabriel Egli
 				</span>
 

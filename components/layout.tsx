@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import throttle from '../functions/throttle';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import HeroContainer from './hero/HeroContainer';
@@ -10,6 +12,20 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
 	const router = useRouter();
+
+	const scrollSnap = throttle(() => {
+		if (scrollY == innerHeight) {
+			setTimeout(() => scroll({ top: innerHeight }), 100);
+		}
+	}, 5);
+
+	useEffect(() => {
+		window.addEventListener('scroll', scrollSnap);
+
+		return () => {
+			window.removeEventListener('scroll', scrollSnap);
+		};
+	});
 
 	return (
 		<>

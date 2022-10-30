@@ -36,7 +36,7 @@ export default function ErrorPage() {
 
 			<button
 				onClick={returnToHomepage}
-				className='bg-red-200 text-red-700  px-6 py-0.5 rounded-md flex items-center gap-2 self-center md:self-end hover:bg-red-300 active:ring-2 ring-offset-2 ring-red-300  ring-offset-neutral-900'>
+				className='bg-red-300 text-red-700  px-6 py-0.5 rounded-md flex items-center gap-2 self-center md:self-end hover:bg-red-200 active:ring-2 ring-offset-2 ring-red-300 ring-offset-neutral-900'>
 				return to landing page
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
