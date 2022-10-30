@@ -127,15 +127,14 @@ export default function HeroContainer() {
 		<>
 			<div
 				id='hero-container'
-				className='overflow-hidden relative h-screen background-gradient from-neutral-700 to-neutral-900 shadow-neutral-900'>
+				className='overflow-hidden relative h-screen background-gradient from-neutral-700 to-neutral-900 '>
 				<MobileHint />
 
-				<div>
-					<span className='title-text select-none text-transparent bg-clip-text title-gradient from-neutral-100 to-neutral-900 pb-3 text-center md:whitespace-nowrap sm:font-medium'>
-						Gabriel Egli
-					</span>
-				</div>
+				<span className='title-text select-none text-transparent bg-clip-text title-gradient from-neutral-100 to-neutral-900 pb-3 text-center md:whitespace-nowrap sm:font-medium'>
+					Gabriel Egli
+				</span>
 
+				{/** Fade out Container */}
 				<div className='w-screen h-10 absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/70 to-neutral-900' />
 
 				<ScrollDownButton />

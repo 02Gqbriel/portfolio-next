@@ -14,7 +14,7 @@ export default function Layout({ children }: LayoutProps) {
 	return (
 		<>
 			<Head>
-				<title>Gabriels Portfolio</title>
+				<title>Webdesign · Gabriel Egli</title>
 			</Head>
 			<div
 				id='root'
@@ -22,7 +22,6 @@ export default function Layout({ children }: LayoutProps) {
 				{router.asPath == '/' && <HeroContainer />}
 
 				<div className='flex flex-col flex-grow justify-between '>
-					<div className='snap-always snap-start'></div>
 					{router.pathname !== '/404' && router.pathname !== '/500' && (
 						<Header />
 					)}

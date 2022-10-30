@@ -21,7 +21,7 @@ function MobileHint() {
 				/>
 			</svg>
 
-			<span className='text-xs font-light text-neutral-500'>
+			<span className='text-xs font-light text-neutral-600'>
 				Tap screen to change lighting angle
 			</span>
 		</div>
