@@ -37,8 +37,7 @@
 
 	.title-gradient {
 		background-image: radial-gradient(
-			circle farthest-corner at var(--title-gradient-left)
-				var(--title-gradient-top),
+			circle farthest-corner at var(--title-gradient-left) var(--title-gradient-top),
 			var(--tw-gradient-from) var(--title-gradient-size),
 			var(--tw-gradient-to)
 		);

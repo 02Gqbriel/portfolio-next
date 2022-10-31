@@ -8,7 +8,7 @@ import ScrollDownButton from './ScrollDownButton';
 export default function HeroContainer() {
 	const [pastHero, setPastHero] = useState(false);
 
-	function calculateLigthing(event: PointerEvent) {
+	const calculateLigthing = throttle((event: PointerEvent) => {
 		if (innerHeight - scrollY <= 0 || innerHeight < scrollY + event.y) return;
 
 		let center: { x: number; y: number } = {
@@ -31,15 +31,9 @@ export default function HeroContainer() {
 
 		setProperty('--title-gradient-top', `${getPosition('y', innerHeight)}%`);
 
-		setProperty(
-			'--background-gradient-left',
-			`${getPosition('x', innerWidth)}%`
-		);
+		setProperty('--background-gradient-left', `${getPosition('x', innerWidth)}%`);
 
-		setProperty(
-			'--background-gradient-top',
-			`${getPosition('y', innerHeight)}%`
-		);
+		setProperty('--background-gradient-top', `${getPosition('y', innerHeight)}%`);
 
 		const calcSize = (key: 'x' | 'y', conRef: number) =>
 			clamp(
@@ -53,9 +47,9 @@ export default function HeroContainer() {
 			'--title-gradient-size',
 			`${(calcSize('x', innerWidth) + calcSize('y', innerHeight)) / 2}%`
 		);
-	}
+	}, 10);
 
-	function calculateSize() {
+	const calculateSize = throttle(() => {
 		const container = document.documentElement;
 
 		document.documentElement.style.setProperty(
@@ -84,7 +78,7 @@ export default function HeroContainer() {
 				[50, 100]
 			)}vh`
 		);
-	}
+	}, 10);
 
 	useEffect(() => {
 		setPastHero(innerHeight <= scrollY);
@@ -93,16 +87,13 @@ export default function HeroContainer() {
 			if (innerWidth < 640) {
 				window.removeEventListener('pointerdown', calculateLigthing);
 			} else {
-				window.removeEventListener(
-					'pointermove',
-					throttle(calculateLigthing, 10)
-				);
+				window.removeEventListener('pointermove', calculateLigthing);
 			}
 		} else {
 			if (innerWidth < 640) {
 				window.addEventListener('pointerdown', calculateLigthing);
 			} else {
-				window.addEventListener('pointermove', throttle(calculateLigthing, 10));
+				window.addEventListener('pointermove', calculateLigthing);
 			}
 
 			document.addEventListener('scroll', calculateSize);
@@ -113,29 +104,27 @@ export default function HeroContainer() {
 			if (innerWidth < 640) {
 				window.removeEventListener('pointerdown', calculateLigthing);
 			} else {
-				window.removeEventListener(
-					'pointermove',
-					throttle(calculateLigthing, 10)
-				);
+				window.removeEventListener('pointermove', calculateLigthing);
 			}
 
 			document.removeEventListener('scroll', calculateSize);
 		};
-	}, [pastHero]);
+	}, [calculateLigthing, calculateSize, pastHero]);
 
 	return (
 		<>
 			<div
-				id='hero-container'
-				className='overflow-hidden relative h-screen background-gradient from-neutral-700 to-neutral-900 '>
+				id="hero-container"
+				className="overflow-hidden relative h-screen background-gradient from-neutral-700 to-neutral-900 "
+			>
 				<MobileHint />
 
-				<span className='title-text transition-all duration-[10ms] select-none text-transparent bg-clip-text title-gradient from-neutral-100 to-neutral-900 pb-5 text-center md:whitespace-nowrap sm:font-medium'>
+				<span className="title-text select-none text-transparent bg-clip-text title-gradient from-neutral-100 to-neutral-900 pb-5 text-center md:whitespace-nowrap sm:font-medium">
 					Gabriel Egli
 				</span>
 
 				{/** Fade out Container */}
-				<div className='w-screen h-10 absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/70 to-neutral-900' />
+				<div className="w-screen h-10 absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/70 to-neutral-900" />
 
 				<ScrollDownButton />
 			</div>
