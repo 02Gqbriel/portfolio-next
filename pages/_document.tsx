@@ -5,7 +5,7 @@ export default function Document() {
 		<Html lang="en-US">
 			<Head>
 				<meta charSet="UTF-8" />
-				<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+				<meta content="text/html;charset=utf-8" httpEquiv="Content-Type" />
 
 				<meta
 					name="keywords"

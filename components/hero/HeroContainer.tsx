@@ -6,8 +6,6 @@ import HeroBackgroundImage from './HeroBackgroundImage';
 import MobileHint from './MobileHint';
 import ScrollDownButton from './ScrollDownButton';
 
-import './hero.module.css';
-
 export default function HeroContainer() {
 	const [pastHero, setPastHero] = useState(false);
 
@@ -69,7 +67,7 @@ export default function HeroContainer() {
 			`${mapToRange(
 				clamp(container.scrollTop, 0, innerHeight),
 				[0, innerHeight],
-				[1, -1.75]
+				[1, -1]
 			)}`
 		);
 
@@ -122,7 +120,7 @@ export default function HeroContainer() {
 			>
 				<MobileHint />
 
-				<span className="title-text select-none text-transparent bg-clip-text title-gradient from-neutral-100 to-neutral-900 pb-5 text-center md:whitespace-nowrap sm:font-medium">
+				<span className="title-text absolute left-[50vw] subpixel-antialiased text-8xl md:text-9xl tracking-tighter select-none text-transparent bg-clip-text title-gradient from-neutral-100/90 to-neutral-900 pb-5 text-center md:whitespace-nowrap !font-semibold">
 					Gabriel Egli
 				</span>
 

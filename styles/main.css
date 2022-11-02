@@ -3,7 +3,7 @@
 @tailwind utilities;
 @tailwind variants;
 
-@layer base {
+@layer components {
 	:root {
 		--title-gradient-left: 50%;
 		--title-gradient-top: 50%;
@@ -19,7 +19,7 @@
 
 	:root,
 	* {
-		@apply antialiased leading-relaxed;
+		@apply antialiased leading-relaxed !font-medium;
 	}
 
 	*::selection {
@@ -27,8 +27,6 @@
 	}
 
 	.title-text {
-		@apply absolute left-[50vw] subpixel-antialiased text-9xl !font-semibold tracking-tighter;
-
 		transform-origin: left;
 		transform: scale(var(--title-size)) translate(-50%, -50%);
 		line-height: 1;

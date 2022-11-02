@@ -7,7 +7,7 @@ function HeroBackgroundImage() {
 		<Image
 			src={HeroImage}
 			alt="Hero Image"
-			className="absolute h-screen w-screen object-fill"
+			className="absolute h-screen w-screen object-cover sm:object-fill"
 			placeholder="blur"
 			priority
 		/>
