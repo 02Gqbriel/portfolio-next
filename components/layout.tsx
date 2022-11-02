@@ -7,7 +7,7 @@ import Header from './header/Header';
 import HeroContainer from './hero/HeroContainer';
 import { Urbanist } from '@next/font/google';
 
-const font = Urbanist({ subsets: ['latin'] });
+const font = Urbanist({ subsets: ['latin'], preload: true });
 
 type LayoutProps = {
 	children: React.ReactNode;

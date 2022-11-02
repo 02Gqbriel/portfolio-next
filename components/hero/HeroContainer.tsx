@@ -6,6 +6,8 @@ import HeroBackgroundImage from './HeroBackgroundImage';
 import MobileHint from './MobileHint';
 import ScrollDownButton from './ScrollDownButton';
 
+import './hero.module.css';
+
 export default function HeroContainer() {
 	const [pastHero, setPastHero] = useState(false);
 

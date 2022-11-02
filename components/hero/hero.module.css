@@ -1,0 +1,34 @@
+.title-text {
+	@apply absolute left-[50vw] subpixel-antialiased text-9xl !font-semibold tracking-tighter;
+
+	transform-origin: left;
+	transform: scale(var(--title-size)) translate(-50%, -50%);
+	line-height: 1;
+	opacity: var(--title-opacity);
+	top: var(--title-top);
+	-webkit-transform: scale(var(--title-size)) translate(-50%, -50%);
+	-moz-transform: scale(var(--title-size)) translate(-50%, -50%);
+	-ms-transform: scale(var(--title-size)) translate(-50%, -50%);
+	-o-transform: scale(var(--title-size)) translate(-50%, -50%);
+}
+
+.title-gradient {
+	background-image: radial-gradient(
+		circle farthest-corner at var(--title-gradient-left) var(--title-gradient-top),
+		var(--tw-gradient-from) var(--title-gradient-size),
+		var(--tw-gradient-to)
+	);
+}
+
+.background-gradient {
+	background-image: radial-gradient(
+		circle farthest-corner at var(--background-gradient-left)
+			var(--background-gradient-top),
+		var(--tw-gradient-from),
+		var(--tw-gradient-to) 30%
+	);
+}
+
+.title-glow {
+	text-shadow: 0 5px 2px var(--tw-gradient-from);
+}

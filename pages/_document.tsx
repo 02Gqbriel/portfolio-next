@@ -7,7 +7,6 @@ export default function Document() {
 				<meta charSet="UTF-8" />
 				<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
 
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta
 					name="keywords"
 					content="Webdesign, Zuerich, Zürich, Schweiz, Switzerland, Websites, Website, Online, Agency, Freelancer"
