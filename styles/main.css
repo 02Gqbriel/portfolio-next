@@ -19,7 +19,7 @@
 
 	:root,
 	* {
-		@apply antialiased leading-relaxed overflow-x-hidden;
+		@apply antialiased leading-relaxed;
 	}
 
 	*::selection {
@@ -50,12 +50,11 @@
 
 	.background-gradient {
 		background-image: radial-gradient(
-				circle farthest-corner at var(--background-gradient-left)
-					var(--background-gradient-top),
-				var(--tw-gradient-from),
-				var(--tw-gradient-to) 30%
-			),
-			url(/hero-zuerich.jpg);
+			circle farthest-corner at var(--background-gradient-left)
+				var(--background-gradient-top),
+			var(--tw-gradient-from),
+			var(--tw-gradient-to) 30%
+		);
 	}
 
 	.title-glow {

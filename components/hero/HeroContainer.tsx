@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import clamp from '../../functions/clamp';
 import mapToRange from '../../functions/mapToRange';
 import throttle from '../../functions/throttle';
+import HeroBackgroundImage from './HeroBackgroundImage';
 import MobileHint from './MobileHint';
 import ScrollDownButton from './ScrollDownButton';
 
@@ -115,7 +116,7 @@ export default function HeroContainer() {
 		<>
 			<div
 				id="hero-container"
-				className="overflow-hidden relative h-screen background-gradient from-neutral-800/60 to-neutral-900/95"
+				className="overflow-hidden relative h-screen background-gradient from-neutral-800/60 to-neutral-900/95 z-10"
 			>
 				<MobileHint />
 
@@ -128,6 +129,8 @@ export default function HeroContainer() {
 
 				<ScrollDownButton />
 			</div>
+
+			<HeroBackgroundImage />
 		</>
 	);
 }
