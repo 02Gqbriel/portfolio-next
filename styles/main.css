@@ -19,7 +19,7 @@
 
 	:root,
 	* {
-		@apply antialiased leading-relaxed;
+		@apply antialiased leading-relaxed overflow-x-hidden;
 	}
 
 	*::selection {
@@ -27,12 +27,17 @@
 	}
 
 	.title-text {
-		@apply absolute left-[50vw] -translate-x-[50%] -translate-y-[50%] subpixel-antialiased;
+		@apply absolute left-[50vw] subpixel-antialiased text-9xl;
 
-		font-size: var(--title-size);
+		transform-origin: left;
+		transform: scale(var(--title-size)) translate(-50%, -50%);
 		line-height: 1;
 		opacity: var(--title-opacity);
 		top: var(--title-top);
+		-webkit-transform: scale(var(--title-size)) translate(-50%, -50%);
+		-moz-transform: scale(var(--title-size)) translate(-50%, -50%);
+		-ms-transform: scale(var(--title-size)) translate(-50%, -50%);
+		-o-transform: scale(var(--title-size)) translate(-50%, -50%);
 	}
 
 	.title-gradient {
@@ -45,11 +50,12 @@
 
 	.background-gradient {
 		background-image: radial-gradient(
-			circle farthest-corner at var(--background-gradient-left)
-				var(--background-gradient-top),
-			var(--tw-gradient-from),
-			var(--tw-gradient-to) 30%
-		);
+				circle farthest-corner at var(--background-gradient-left)
+					var(--background-gradient-top),
+				var(--tw-gradient-from),
+				var(--tw-gradient-to) 30%
+			),
+			url(/hero-zuerich.jpg);
 	}
 
 	.title-glow {

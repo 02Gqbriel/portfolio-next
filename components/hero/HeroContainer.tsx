@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import clamp from '../../functions/clamp';
 import mapToRange from '../../functions/mapToRange';
 import throttle from '../../functions/throttle';
@@ -49,7 +49,7 @@ export default function HeroContainer() {
 		);
 	}, 10);
 
-	const calculateSize = throttle(() => {
+	const calculateSize = useCallback(() => {
 		const container = document.documentElement;
 
 		document.documentElement.style.setProperty(
@@ -57,8 +57,8 @@ export default function HeroContainer() {
 			`${mapToRange(
 				clamp(container.scrollTop, 0, innerHeight),
 				[0, innerHeight],
-				[innerWidth < 640 ? 4 : 8, 35]
-			)}rem`
+				[1, 3]
+			)}`
 		);
 
 		document.documentElement.style.setProperty(
@@ -66,7 +66,7 @@ export default function HeroContainer() {
 			`${mapToRange(
 				clamp(container.scrollTop, 0, innerHeight),
 				[0, innerHeight],
-				[1, innerWidth < 640 ? -1.75 : -0.5]
+				[1, -1.75]
 			)}`
 		);
 
@@ -78,7 +78,7 @@ export default function HeroContainer() {
 				[50, 100]
 			)}vh`
 		);
-	}, 10);
+	}, []);
 
 	useEffect(() => {
 		setPastHero(innerHeight <= scrollY);
@@ -115,7 +115,7 @@ export default function HeroContainer() {
 		<>
 			<div
 				id="hero-container"
-				className="overflow-hidden relative h-screen background-gradient from-neutral-700 to-neutral-900 "
+				className="overflow-hidden relative h-screen background-gradient from-neutral-800/60 to-neutral-900/95"
 			>
 				<MobileHint />
 
@@ -124,7 +124,7 @@ export default function HeroContainer() {
 				</span>
 
 				{/** Fade out Container */}
-				<div className="w-screen h-10 absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/70 to-neutral-900" />
+				<div className="w-screen h-10 absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/0 to-neutral-900" />
 
 				<ScrollDownButton />
 			</div>
