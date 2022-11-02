@@ -27,7 +27,7 @@
 	}
 
 	.title-text {
-		@apply absolute left-[50vw] subpixel-antialiased text-9xl;
+		@apply absolute left-[50vw] subpixel-antialiased text-9xl !font-semibold tracking-tighter;
 
 		transform-origin: left;
 		transform: scale(var(--title-size)) translate(-50%, -50%);

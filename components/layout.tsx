@@ -5,6 +5,9 @@ import throttle from '../functions/throttle';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import HeroContainer from './hero/HeroContainer';
+import { Urbanist } from '@next/font/google';
+
+const font = Urbanist({ subsets: ['latin'] });
 
 type LayoutProps = {
 	children: React.ReactNode;
@@ -33,20 +36,20 @@ export default function Layout({ children }: LayoutProps) {
 				<title>Webdesign · Gabriel Egli</title>
 			</Head>
 			<div
-				id='root'
-				className='flex flex-col min-h-screen justify-between relative bg-neutral-900 text-neutral-200 '>
+				id="root"
+				className={
+					'flex flex-col min-h-screen justify-between relative bg-neutral-900 text-neutral-200 ' +
+					font.className
+				}
+			>
 				{router.asPath == '/' && <HeroContainer />}
 
-				<div className='flex flex-col flex-grow justify-between '>
-					{router.pathname !== '/404' && router.pathname !== '/500' && (
-						<Header />
-					)}
+				<div className="flex flex-col flex-grow justify-between ">
+					{router.pathname !== '/404' && router.pathname !== '/500' && <Header />}
 
-					<main className='flex-grow'>{children}</main>
+					<main className="flex-grow">{children}</main>
 
-					{router.pathname !== '/404' && router.pathname !== '/500' && (
-						<Footer />
-					)}
+					{router.pathname !== '/404' && router.pathname !== '/500' && <Footer />}
 				</div>
 			</div>
 		</>

@@ -241,8 +241,6 @@ export default function Document() {
 					type="font/otf"
 					crossOrigin="use-credentials"
 				/>
-
-				<link rel="preload" as="image" href="/hero-zuerich.jpg" />
 			</Head>
 			<body>
 				<Main />
