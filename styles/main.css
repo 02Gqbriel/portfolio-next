@@ -19,7 +19,7 @@
 
 	:root,
 	* {
-		@apply antialiased leading-relaxed !font-medium;
+		@apply antialiased tracking-wide !font-semibold;
 	}
 
 	*::selection {
@@ -40,7 +40,8 @@
 
 	.title-gradient {
 		background-image: radial-gradient(
-			circle farthest-corner at var(--title-gradient-left) var(--title-gradient-top),
+			circle farthest-corner at var(--title-gradient-left)
+				var(--title-gradient-top),
 			var(--tw-gradient-from) var(--title-gradient-size),
 			var(--tw-gradient-to)
 		);
@@ -57,5 +58,69 @@
 
 	.title-glow {
 		text-shadow: 0 5px 2px var(--tw-gradient-from);
+	}
+
+	.radial-gradient {
+		background-image: radial-gradient(
+			var(--tw-gradient-from),
+			var(--tw-gradient-to)
+		);
+	}
+
+	.slider::before {
+		@apply absolute content-[""] h-0.5 bg-neutral-200 -bottom-0.5 scale-110;
+	}
+
+	.slide-in-left::before {
+		animation-name: slide-in-left;
+		animation-duration: 250ms;
+		animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+		animation-fill-mode: forwards;
+	}
+
+	@-webkit-keyframes slide-in-left {
+		0% {
+			width: 0%;
+		}
+		100% {
+			width: 100%;
+		}
+	}
+	@keyframes slide-in-left {
+		0% {
+			width: 0%;
+		}
+		100% {
+			width: 100%;
+		}
+	}
+
+	.slide-out-right::before {
+		animation-name: slide-out-right;
+		animation-duration: 250ms;
+		animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+		animation-fill-mode: both;
+		float: right;
+	}
+
+	@-webkit-keyframes slide-out-right {
+		0% {
+			width: 100%;
+			margin-left: 0%;
+		}
+		100% {
+			width: 0%;
+			margin-left: 100%;
+		}
+	}
+	@keyframes slide-out-right {
+		0% {
+			width: 100%;
+			margin-left: 0%;
+		}
+		100% {
+			width: 0%;
+			margin-left: 100%;
+		}
 	}
 }

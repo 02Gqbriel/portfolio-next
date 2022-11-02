@@ -16,40 +16,29 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
 	const router = useRouter();
 
-	const scrollSnap = throttle(() => {
-		if (scrollY == innerHeight) {
-			setTimeout(() => scroll({ top: innerHeight }), 100);
-		}
-	}, 5);
-
-	useEffect(() => {
-		window.addEventListener('scroll', scrollSnap);
-
-		return () => {
-			window.removeEventListener('scroll', scrollSnap);
-		};
-	});
-
 	return (
 		<>
 			<Head>
 				<title>Webdesign · Gabriel Egli</title>
 			</Head>
 			<div
-				id="root"
+				id='root'
 				className={
 					'flex flex-col min-h-screen justify-between relative bg-neutral-900 text-neutral-200 ' +
 					font.className
-				}
-			>
+				}>
 				{router.asPath == '/' && <HeroContainer />}
 
-				<div className="flex flex-col flex-grow justify-between ">
-					{router.pathname !== '/404' && router.pathname !== '/500' && <Header />}
+				<div className='flex flex-col flex-grow justify-between '>
+					{router.pathname !== '/404' && router.pathname !== '/500' && (
+						<Header />
+					)}
 
-					<main className="flex-grow">{children}</main>
+					<main className='flex-grow'>{children}</main>
 
-					{router.pathname !== '/404' && router.pathname !== '/500' && <Footer />}
+					{router.pathname !== '/404' && router.pathname !== '/500' && (
+						<Footer />
+					)}
 				</div>
 			</div>
 		</>

@@ -32,9 +32,15 @@ export default function HeroContainer() {
 
 		setProperty('--title-gradient-top', `${getPosition('y', innerHeight)}%`);
 
-		setProperty('--background-gradient-left', `${getPosition('x', innerWidth)}%`);
+		setProperty(
+			'--background-gradient-left',
+			`${getPosition('x', innerWidth)}%`
+		);
 
-		setProperty('--background-gradient-top', `${getPosition('y', innerHeight)}%`);
+		setProperty(
+			'--background-gradient-top',
+			`${getPosition('y', innerHeight)}%`
+		);
 
 		const calcSize = (key: 'x' | 'y', conRef: number) =>
 			clamp(
@@ -58,7 +64,7 @@ export default function HeroContainer() {
 			`${mapToRange(
 				clamp(container.scrollTop, 0, innerHeight),
 				[0, innerHeight],
-				[1, 3]
+				[1, 4]
 			)}`
 		);
 
@@ -76,7 +82,7 @@ export default function HeroContainer() {
 			`${mapToRange(
 				clamp(container.scrollTop, 0, innerHeight),
 				[0, innerHeight],
-				[50, 100]
+				[50, 120]
 			)}vh`
 		);
 	}, []);
@@ -115,17 +121,16 @@ export default function HeroContainer() {
 	return (
 		<>
 			<div
-				id="hero-container"
-				className="overflow-hidden relative h-screen background-gradient from-neutral-800/60 to-neutral-900/95 z-10"
-			>
+				id='hero-container'
+				className='overflow-hidden relative h-screen background-gradient from-neutral-800/60 to-neutral-900/95 z-10'>
 				<MobileHint />
 
-				<span className="title-text absolute left-[50vw] subpixel-antialiased text-8xl md:text-9xl tracking-tighter select-none text-transparent bg-clip-text title-gradient from-neutral-100/90 to-neutral-900 pb-5 text-center md:whitespace-nowrap !font-semibold">
+				<span className='title-text absolute left-[50vw] subpixel-antialiased text-8xl md:text-9xl tracking-tighter select-none text-transparent bg-clip-text title-gradient from-neutral-100/90 to-neutral-900 pb-5 text-center md:whitespace-nowrap !font-bold'>
 					Gabriel Egli
 				</span>
 
 				{/** Fade out Container */}
-				<div className="w-screen h-10 absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/0 to-neutral-900" />
+				<div className='w-screen h-10 absolute bottom-0 bg-gradient-to-b from-neutral-900/0 via-neutral-900/0 to-neutral-900' />
 
 				<ScrollDownButton />
 			</div>
