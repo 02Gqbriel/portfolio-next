@@ -226,21 +226,6 @@ export default function Document() {
 
 				<meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
 				<meta name="msapplication-TileColor" content="#171717" />
-
-				<link
-					rel="preload"
-					href="/font/okine/OkineSans-Medium.otf"
-					as="font"
-					type="font/otf"
-					crossOrigin="use-credentials"
-				/>
-				<link
-					rel="preload"
-					href="/font/okine/OkineSans-Regular.otf"
-					as="font"
-					type="font/otf"
-					crossOrigin="use-credentials"
-				/>
 			</Head>
 			<body>
 				<Main />
